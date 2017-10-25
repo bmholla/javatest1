@@ -11,7 +11,7 @@ public class javatest1
         Person[] persons = GenPersonList.genPersonList(10);
 
         for(Person p : persons)
-            System.out.println(p.getAge());
+            System.out.println(p.getName() + " " + p.getAge());
     }
 }
 
@@ -44,9 +44,22 @@ class GenPersonList
         for(int i=0;i<10;i++)
         {
             System.out.println("got here");
-            personlist[i] = new Person("", r.nextInt(99));
+            personlist[i] = new Person(CreateRandomString.createRandomString(5), r.nextInt(99));
         }
 
         return personlist;
+    }
+}
+
+class CreateRandomString
+{
+    static String createRandomString(int count)
+    {
+        Random r = new Random();
+        StringBuffer sb = new StringBuffer(count);
+        for(int i=0;i<count;i++)
+            sb.append((char)('a'+r.nextInt(25)));
+
+        return sb.toString();
     }
 }
